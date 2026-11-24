@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      MOUNT_DIR: /data/plugins
+      PORT: "8080"
+    volumes:
+      # 发布员可替换为自己的插件目录；容器内只读挂载
+      - ./samples:/data/plugins:ro
+    restart: unless-stopped
